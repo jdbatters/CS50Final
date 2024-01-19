@@ -10,5 +10,57 @@
 }
 body {
     font-family: sans-serif;
-    margin: 0;
+}
+
+.login {
+    margin-top: 50px;
+}
+
+.input-group {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+.list-group {
+    width:75%;
+    margin-top: 0px;   
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.list-group-item {
+    border-radius: 5px;
+}
+.hstack {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: stretch;
+    margin-top: 5px;
+}
+
+.btn.btn-light:hover {
+    background-color: red;
+}
+
+.card-text {
+    overflow: auto;
+    height:100%
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    max-height: 500px;
+
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
 }

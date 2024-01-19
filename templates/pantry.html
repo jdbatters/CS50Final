@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Pantry
+{% endblock %}
+
+{% block main %}
+<div>
+    <div class="hstack gap-3">
+    <form action="/pantry" method="post" class="input-group mb-3">
+            <input type="text" class="form-control" name="food" placeholder="Add Food" aria-label="Add Food" aria-describedby="button-addon2">
+            <button class="btn btn-outline-light" type="submit" id="button-addon2">Add to Pantry</button>
+    </form>
+    </div>
+    <ul class="list-group list-group-horizontal-xxl">
+        <li class="list-group-item">Available Food</li>
+    <div class="hstack gap-3">
+    {% for food in pantry %}
+        <form action="/pantry_delete" method="post">
+                <button type="submit "class="btn btn-light" name="{{ food }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to remove from pantry">{{ food }}</button>
+        </form>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %} 

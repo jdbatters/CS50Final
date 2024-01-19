@@ -1,14 +1,30 @@
-{% extends "layout.html" %}
-
-{% block title %} Homepage {% endblock%}
-
-{% block main %}
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+{% extends "layout.html" %} {% block title %} Homepage {% endblock%} {% block
+main %} {% for food in pantry_list %}
+<div class="container">
+  {% for card in total_cards %}
+  <div class="card" style="width: 18rem">
+    <img
+      src="{{ recipe_info[food][food][0][0][card][0][0] }}"
+      class="card-img-top"
+      alt="..."
+    />
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <h5 class="card-title">
+        {{ recipe_info[food][food][0][0][card][0][2] }}
+      </h5>
+      <p class="card-text">
+        {% set ingredients = recipe_info[food][food][0][0][card][0][1] %} {% set
+        ingredients = ingredients|string %} {{
+        ingredients|replace('[','')|replace(']','')|replace("'","") }}
+      </p>
+      <a
+        href="{{ recipe_info[food][food][0][1][card] }}"
+        target="_blank"
+        class="btn btn-primary"
+        >Visit {{ recipe_info[food][food][0][0][card][0][3]}}</a
+      >
     </div>
   </div>
-{% endblock %}
+  {% endfor %}
+</div>
+{% endfor %} {% endblock %}
