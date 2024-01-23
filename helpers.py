@@ -19,12 +19,15 @@ def generate_recipes(ingredient):
     recipe_dict = {}
     all_recipes_list = []
     recipe_data_list = []
-    recipe_generation_limit = range(5)
+    recipe_url_list = []
+
+    num_of_recipes = 3
+    recipe_generation_limit = range(num_of_recipes)
     api_generation_limit = json["to"]
     api_query_limit = list(range(0, api_generation_limit))
-    random_int_list = random.sample(api_query_limit, 5)
-    recipe_url_list = []
+    random_int_list = random.sample(api_query_limit, num_of_recipes)
     
+
     for int in random_int_list:
         food_link = json["hits"][int]["recipe"]["url"]
         recipe_url_list.append(food_link)
@@ -69,4 +72,3 @@ def check_for_nums(input):
     else:
         return False
 
-check_for_nums("sour cream2")
