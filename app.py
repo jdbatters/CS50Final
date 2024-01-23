@@ -20,13 +20,18 @@ connect.close()
 @login_required
 def index():
     pantry_list = []
+    
     connect = sqlite3.connect('pantry.db', check_same_thread=False) 
     pantry = connect.execute("SELECT available_food FROM pantry WHERE user_id = ?", (session["user_id"],)).fetchall()
     
     card_data = {}
     for i in range(len(pantry)):
         pantry_list.append(pantry[i][0])
-
+    if not pantry_list:
+        empty_pantry = True
+    else:
+        empty_pantry = False
+    print(empty_pantry)
     for ingredient in pantry_list:
         recipe_dict = generate_recipes(ingredient)
         card_data[ingredient] = recipe_dict
@@ -34,7 +39,7 @@ def index():
     
 
 
-    return render_template("index.html", recipe_info=card_data, pantry_list=pantry_list, total_cards=total_cards )
+    return render_template("index.html", recipe_info=card_data, pantry_list=pantry_list, total_cards=total_cards, empty_pantry=empty_pantry )
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

@@ -14,9 +14,7 @@ def generate_recipes(ingredient):
         +   f"{ingredient}" + 
             f"&app_id=" + app_id + "&app_key=" + app_key + "&imageSize=REGULAR"
     )
-
     response = requests.get(url)
-
     json = response.json()
     recipe_dict = {}
     all_recipes_list = []
@@ -26,6 +24,7 @@ def generate_recipes(ingredient):
     api_query_limit = list(range(0, api_generation_limit))
     random_int_list = random.sample(api_query_limit, 5)
     recipe_url_list = []
+    
     for int in random_int_list:
         food_link = json["hits"][int]["recipe"]["url"]
         recipe_url_list.append(food_link)

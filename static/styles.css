@@ -64,3 +64,9 @@ body {
     flex-direction: column;
     overflow-y: scroll;
 }
+.empty-card {
+    display: flex;
+    max-width: 250px;
+    margin: 30px;
+    margin-left: 40%;
+}

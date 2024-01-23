@@ -1,5 +1,17 @@
 {% extends "layout.html" %} {% block title %} Homepage {% endblock%} {% block
-main %} {% for food in pantry_list %}
+main %} {% if empty_pantry == True %}
+<div class="empty-card">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Your pantry is empty!</h5>
+      <p class="card-text">
+        To generate recipes, fill your pantry with some food.
+      </p>
+      <a href="/pantry" class="btn btn-primary">Head into your pantry</a>
+    </div>
+  </div>
+</div>
+{% endif %} {% for food in pantry_list %}
 <div class="container">
   {% for card in total_cards %}
   <div class="card" style="width: 18rem">
