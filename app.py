@@ -31,7 +31,6 @@ def index():
         empty_pantry = True
     else:
         empty_pantry = False
-    print(empty_pantry)
     for ingredient in pantry_list:
         recipe_dict = generate_recipes(ingredient)
         card_data[ingredient] = recipe_dict
